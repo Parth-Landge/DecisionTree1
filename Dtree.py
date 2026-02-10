@@ -67,7 +67,7 @@ class DecisionTree:
         return split_idx,split_thresh
             
             
-    def _build_tree(self, X, y, depth=0):
+    def  build_tree(self, X, y, depth=0):
         n_samples, n_feats = X.shape
         n_labels = len(np.unique(y))
 
@@ -92,7 +92,7 @@ class DecisionTree:
         
         return Node(best_feat, best_thresh, left_child, right_child)
 
-    def _most_common_label(self, y):
+    def  most_common_label(self, y):
         
         from collections import Counter
         most_common = Counter(y).most_common(1)
@@ -106,7 +106,7 @@ class DecisionTree:
         predictions = [self._traverse_tree(x, self.root) for x in X]
         return np.array(predictions)
 
-    def _traverse_tree(self, x, node):
+    def  traverse_tree(self, x, node):
         
         if node.is_leaf_node():
             return node.value
@@ -119,6 +119,7 @@ class DecisionTree:
             
             return self._traverse_tree(x, node.right)
             
+
 
 
 
